@@ -12,8 +12,9 @@
 </ion-header>
 
 <ion-content padding>
-  Hello World, Android
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <h1>Hello World, Android</h1>
+  <div *ngIf="images.length == 0">
+    <br />
+    Click on the camera icon to take photos
+  </div>
 </ion-content>

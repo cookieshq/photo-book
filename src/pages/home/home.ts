@@ -8,8 +8,9 @@ import { Camera, CameraOptions } from '@ionic-native/camera'
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private camera: Camera) {
+  public images: string[] = new Array();
 
+  constructor(public navCtrl: NavController, private camera: Camera) {
   }
 
   takePhoto() {
@@ -27,6 +28,8 @@ export class HomePage {
 
     this.camera.getPicture(options).then((imageUri) => {
       console.log("imageUri is "+imageUri);
+      this.images.push(imageUri);
+      let imageUris = this.images.map(o => o).join(',');
     }, (err) => {
       console.log("camera error is"+err);
     });
