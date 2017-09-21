@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,Platform } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera'
 import { NativeStorage } from '@ionic-native/native-storage'
 
@@ -11,7 +11,18 @@ export class HomePage {
 
   public images: string[] = new Array();
 
-  constructor(public navCtrl: NavController, private camera: Camera, private nativeStorage: NativeStorage) {
+  constructor(private camera: Camera, private nativeStorage: NativeStorage, public navCtrl: NavController, public platform: Platform ) {
+    this.platform.ready().then((readySource) => {
+      console.log('Platform ready from', readySource);
+      // Platform now ready, execute any required native code
+      this.nativeStorage.getItem('photo-book')
+        .then(
+          data => {
+            this.images = data.split(',');
+          },
+          error => console.error(error)
+        );
+    });
   }
 
   takePhoto() {
@@ -29,10 +40,10 @@ export class HomePage {
 
     this.camera.getPicture(options).then((imageUri) => {
       console.log("imageUri is "+imageUri);
-      this.images.push("data:image/png;base64,"+ imageUri);
+      this.images.push(imageUri);
       let imageUris = this.images.join(',');
 
-      this.nativeStorage.setItem('photos', imageUris)
+      this.nativeStorage.setItem('photo-book', imageUris)
         .then(
           () => console.log('Stored item!'),
           error => console.error('Error storing item', error)
