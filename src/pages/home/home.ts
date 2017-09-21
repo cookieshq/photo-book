@@ -19,7 +19,7 @@ export class HomePage {
       allowEdit : true,
       targetWidth: 300,
       targetHeight: 300,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       sourceType : this.camera.PictureSourceType.CAMERA,
       mediaType: this.camera.MediaType.PICTURE,
@@ -28,8 +28,8 @@ export class HomePage {
 
     this.camera.getPicture(options).then((imageUri) => {
       console.log("imageUri is "+imageUri);
-      this.images.push(imageUri);
-      let imageUris = this.images.map(o => o).join(',');
+      this.images.push("data:image/png;base64,"+ imageUri);
+      let imageUris = this.images.join(',');
     }, (err) => {
       console.log("camera error is"+err);
     });

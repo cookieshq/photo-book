@@ -17,4 +17,10 @@
     <br />
     Click on the camera icon to take photos
   </div>
+
+  <ion-slides *ngIf="images.length > 0">
+    <ion-slide *ngFor="let image of images">
+      <img [src]="image" />
+    </ion-slide>
+  </ion-slides>
 </ion-content>
