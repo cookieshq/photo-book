@@ -17,8 +17,8 @@ export class HomePage {
     const options: CameraOptions = {
       quality: 100,
       allowEdit : true,
-      targetWidth: 300,
-      targetHeight: 300,
+      targetWidth: 500,
+      targetHeight: 500,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       sourceType : this.camera.PictureSourceType.CAMERA,
