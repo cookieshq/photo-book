@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera'
+import { NativeStorage } from '@ionic-native/native-storage'
 
 @Component({
   selector: 'page-home',
