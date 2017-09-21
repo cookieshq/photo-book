@@ -1,6 +1,6 @@
 {
   "name": "photo-book",
-  "app_id": "",
+  "app_id": "df138ca4",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
